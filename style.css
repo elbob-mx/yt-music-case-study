@@ -1,0 +1,83 @@
+/* Variables de Tema */
+.light-theme {
+    --bg-color: #f2f2f2;
+    --text-color: #111827;
+    --accent-color: #52525c;
+    --accent-hover: #3f3f46;
+    --accent-text: #ffffff;
+    --subtle-color: #4b5563;
+    --card-bg: #ebebeb;
+}
+
+.dark-theme {
+    --bg-color: #0f0f0f;
+    --text-color: #ffffff;
+    --accent-color: #ff0000;
+    --accent-hover: #cc0000;
+    --accent-text: #ffffff;
+    --subtle-color: #aaaaaa;
+    --card-bg: #181818;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    overflow: hidden;
+    touch-action: none;
+}
+
+.subtle-text {
+    color: var(--subtle-color);
+    transition: color 0.5s ease;
+}
+
+.image-placeholder {
+    background-color: var(--card-bg);
+    transition: background-color 0.5s ease;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Indicadores Inferiores */
+.nav-hint,
+.back-to-top {
+    font-size: 16px; /* Cambio solicitado: 16px */
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+@keyframes bounce-gentle {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.animate-hint {
+    animation: bounce-gentle 2s infinite ease-in-out;
+}
+
+.is-hidden {
+    opacity: 0 !important;
+    transform: translateY(10px);
+    pointer-events: none;
+    visibility: hidden;
+    position: absolute;
+}
+
+.is-visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+    position: relative;
+}
