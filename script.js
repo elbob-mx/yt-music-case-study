@@ -1,107 +1,87 @@
-document.addEventListener("DOMContentLoaded", () => {
-    if (typeof gsap !== "undefined" && typeof ScrollToPlugin !== "undefined") {
-        gsap.registerPlugin(ScrollToPlugin);
-    }
+let currentSection = 0;
+const totalSections = 5;
+let isScrolling = false;
+let touchStartY = 0;
+let touchEndY = 0;
 
-    const themeToggle = document.getElementById("theme-toggle");
-    const themeIconContainer = document.getElementById("theme-icon-container");
-    const langToggle = document.getElementById("lang-toggle");
-    const langFlagContainer = document.getElementById("lang-flag-container");
-    const body = document.body;
-    const scrollHint = document.getElementById("scroll-hint");
-    const backToTopBtn = document.getElementById("back-to-top");
+const flags = {
+    // Círculo café central: r="40" y fill="#5D4037"
+    es: `<svg viewBox="0 0 640 480" preserveAspectRatio="xMidYMid slice"><path fill="#006847" d="M0 0h213.3v480H0z"/><path fill="#fff" d="M213.3 0h213.4v480H213.3z"/><path fill="#ce1126" d="M426.7 0H640v480H426.7z"/><circle fill="#5D4037" cx="320" cy="240" r="40" opacity="0.8"/></svg>`,
+    en: `<svg viewBox="0 0 640 480" preserveAspectRatio="xMidYMid slice"><path fill="#002868" d="M0 0h640v480H0z"/><path fill="#FFF" d="M0 0h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0z"/><path fill="#BF0A30" d="M0 37h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0z"/><path fill="#002868" d="M0 0h256v221.5H0z"/><path fill="#FFF" d="M25.6 18.5l3.5 10.7h11.2l-9.1 6.6 3.5 10.7-9.1-6.6-9.1 6.6 3.5-10.7-9.1-6.6h11.2z"/></svg>`,
+};
 
-    const themeIcons = {
-        sun: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
-        moon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>`,
-    };
+const icons = {
+    light: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`,
+    dark: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`,
+};
 
-    const flags = {
-        es: `<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="170.7" height="512" fill="#006847"/><rect x="170.7" width="170.6" height="512" fill="#fff"/><rect x="341.3" width="170.7" height="512" fill="#ce1126"/><circle cx="256" cy="256" r="40" fill="#9ca168"/></svg>`,
-        en: `<svg viewBox="0 0 741 390" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="741" height="390" fill="#b22234"/><path d="M0,30H741M0,90H741M0,150H741M0,210H741M0,270H741M0,330H741" stroke="#fff" stroke-width="30"/><rect width="296.4" height="210" fill="#3c3b6e"/><g fill="#fff"><g id="s18"><g id="s9"><g id="s5"><g id="s"><polygon points="0,-10 5.88,8.09 -9.51,-3.09 9.51,-3.09 -5.88,8.09"/></g><use xlink:href="#s" x="49.4"/><use xlink:href="#s" x="98.8"/><use xlink:href="#s" x="148.2"/><use xlink:href="#s" x="197.6"/></g><use xlink:href="#s5" x="24.7" y="17.5"/></g><use xlink:href="#s9" y="35"/><use xlink:href="#s9" y="70"/><use xlink:href="#s9" y="105"/><use xlink:href="#s9" y="140"/></g></svg>`,
-    };
-
-    let currentLang = localStorage.getItem("preferredLang") || "es";
-    function updateLanguage(lang) {
-        if (langFlagContainer) langFlagContainer.innerHTML = lang === "es" ? flags.en : flags.es;
-        document.querySelectorAll(".translate").forEach((el) => {
-            const text = el.getAttribute(`data-${lang}`);
-            if (text) el.textContent = text;
-        });
-        localStorage.setItem("preferredLang", lang);
-    }
-    updateLanguage(currentLang);
-
-    langToggle?.addEventListener("click", () => {
-        currentLang = currentLang === "es" ? "en" : "es";
-        updateLanguage(currentLang);
+function updateUI() {
+    const lang = localStorage.getItem("lang") || "es";
+    const isDark = document.body.classList.contains("dark-theme");
+    document.getElementById("lang-flag-container").innerHTML = lang === "es" ? flags.en : flags.es;
+    document.getElementById("theme-icon-container").innerHTML = isDark ? icons.light : icons.dark;
+    document.querySelectorAll(".translate").forEach((el) => {
+        el.textContent = el.getAttribute(`data-${lang}`);
     });
+}
 
-    const applyTheme = (theme) => {
-        if (theme === "dark") {
-            body.classList.add("dark-theme");
-            document.documentElement.classList.add("dark");
-            if (themeIconContainer) themeIconContainer.innerHTML = themeIcons.sun;
-        } else {
-            body.classList.remove("dark-theme");
-            document.documentElement.classList.remove("dark");
-            if (themeIconContainer) themeIconContainer.innerHTML = themeIcons.moon;
-        }
-        localStorage.setItem("theme", theme);
-    };
-
-    applyTheme(localStorage.getItem("theme") || "light");
-
-    themeToggle?.addEventListener("click", () => {
-        applyTheme(body.classList.contains("dark-theme") ? "light" : "dark");
+function goToSection(index) {
+    if (index < 0 || index >= totalSections || isScrolling) return;
+    isScrolling = true;
+    currentSection = index;
+    gsap.to(window, {
+        duration: 0.8,
+        scrollTo: `#section-${index}`,
+        ease: "power2.inOut",
+        onComplete: () => {
+            isScrolling = false;
+        },
     });
+}
 
-    const sections = gsap.utils.toArray(".section-page");
-    let currentSection = 0;
-    let isAnimating = false;
-
-    window.goToSection = function (index) {
-        if (isAnimating || index < 0 || index >= sections.length) return;
-        isAnimating = true;
-        currentSection = index;
-
-        if (currentSection === sections.length - 1) {
-            scrollHint?.classList.add("hidden");
-            backToTopBtn?.classList.remove("hidden");
-        } else {
-            scrollHint?.classList.remove("hidden");
-            backToTopBtn?.classList.add("hidden");
+window.addEventListener(
+    "wheel",
+    (e) => {
+        if (!isScrolling) {
+            if (e.deltaY > 0) goToSection(currentSection + 1);
+            else goToSection(currentSection - 1);
         }
+    },
+    { passive: true }
+);
 
-        gsap.to(window, {
-            scrollTo: { y: sections[currentSection], autoKill: false },
-            duration: 1.2,
-            ease: "power3.inOut",
-            onComplete: () => (isAnimating = false),
-        });
-    };
+window.addEventListener(
+    "touchstart",
+    (e) => {
+        touchStartY = e.touches[0].clientY;
+    },
+    { passive: true }
+);
+window.addEventListener(
+    "touchend",
+    (e) => {
+        touchEndY = e.changedTouches[0].clientY;
+        handleTouch();
+    },
+    { passive: true }
+);
 
-    window.addEventListener(
-        "wheel",
-        (e) => {
-            if (isAnimating) return;
-            if (e.deltaY > 20) goToSection(currentSection + 1);
-            else if (e.deltaY < -20) goToSection(currentSection - 1);
-        },
-        { passive: true }
-    );
+function handleTouch() {
+    const swipeDistance = touchStartY - touchEndY;
+    if (Math.abs(swipeDistance) > 50) {
+        if (swipeDistance > 0) goToSection(currentSection + 1);
+        else goToSection(currentSection - 1);
+    }
+}
 
-    let ts;
-    window.addEventListener("touchstart", (e) => (ts = e.touches[0].clientY), { passive: true });
-    window.addEventListener(
-        "touchend",
-        (e) => {
-            let te = e.changedTouches[0].clientY;
-            if (ts - te > 50) goToSection(currentSection + 1);
-            else if (te - ts > 50) goToSection(currentSection - 1);
-        },
-        { passive: true }
-    );
-
-    backToTopBtn?.addEventListener("click", () => goToSection(0));
+document.getElementById("lang-toggle").addEventListener("click", () => {
+    localStorage.setItem("lang", (localStorage.getItem("lang") || "es") === "es" ? "en" : "es");
+    updateUI();
 });
+
+document.getElementById("theme-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+    updateUI();
+});
+
+updateUI();
