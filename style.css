@@ -6,6 +6,7 @@
     --bg-light: #f2f2f2;
     --text-dark: #ffffff;
     --text-light: #0f0f0f;
+    --figma-text: #f2f2f2;
 }
 
 * {
@@ -50,10 +51,38 @@ body.light-theme {
     letter-spacing: 0.1em;
     font-size: 14px;
     transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .btn-primary:hover {
     background-color: var(--yt-red-dark);
+}
+
+/* Botón Figma: Contorno Rojo, Texto #f2f2f2 */
+.btn-outline-figma {
+    background-color: transparent;
+    color: var(--figma-text);
+    border: 2px solid var(--yt-red);
+    padding: 12px 32px;
+    border-radius: 100px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-outline-figma:hover {
+    background-color: rgba(255, 0, 0, 0.05);
+    border-color: var(--yt-red-dark);
+    transform: translateY(-2px);
 }
 
 /* Colores dinámicos para Nombres y Números Estadísticos */
@@ -65,6 +94,18 @@ body.light-theme {
 .light-theme .persona-name,
 .light-theme .metric-number {
     color: var(--yt-red) !important;
+}
+
+/* Estilos para la sección de resultados e iconos */
+.dark-theme .result-card-container {
+    border-color: var(--accent-cyan) !important;
+}
+
+/* Forzar color sólido en los iconos SVG de la sección 3 */
+.dark-theme .result-icons svg {
+    color: var(--accent-cyan) !important;
+    stroke: var(--accent-cyan) !important;
+    opacity: 1 !important;
 }
 
 .stats-card-centered {
@@ -86,7 +127,6 @@ body.light-theme {
 .metric-number {
     font-weight: 700;
     letter-spacing: -0.05em;
-    /* El color ahora se controla por el tema arriba */
 }
 
 .instruction-text {

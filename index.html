@@ -37,7 +37,20 @@
                     <span class="translate" data-es="Rediseñando para el Usuario." data-en="Redesigning for the User.">Redesigning for the User.</span>
                 </h1>
                 <p class="text-[16px] md:text-xl opacity-80 max-w-lg translate" data-es="Simplificando el descubrimiento musical y la interfaz de reproducción." data-en="Simplifying music discovery and the playback interface.">Simplifying music discovery and the playback interface.</p>
-                <button onclick="goToSection(1)" class="btn-primary mt-8 translate" data-es="Explorar Proceso" data-en="Explore Process">Explore Process</button>
+
+                <div class="flex flex-col md:flex-row gap-4 mt-8">
+                    <a href="#" target="_blank" class="btn-outline-figma">
+                        <svg width="16" height="24" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 28.5C19 23.235 23.235 19 28.5 19C33.765 19 38 23.235 38 28.5C38 33.765 33.765 38 28.5 38C23.235 38 19 33.765 19 28.5Z" fill="#1ABCFE" />
+                            <path d="M0 47.5C0 42.235 4.235 38 9.5 38H19V47.5C19 52.765 14.765 57 9.5 57C4.235 57 0 52.765 0 47.5Z" fill="#0ACF83" />
+                            <path d="M19 0H28.5C33.765 0 38 4.235 38 9.5C38 14.765 33.765 19 28.5 19H19V0Z" fill="#FF7262" />
+                            <path d="M0 9.5C0 4.235 4.235 0 9.5 0H19V19H9.5C4.235 19 0 14.765 0 9.5Z" fill="#F24E1E" />
+                            <path d="M0 28.5C0 23.235 4.235 19 9.5 19H19V38H9.5C4.235 38 0 33.765 0 28.5Z" fill="#A259FF" />
+                        </svg>
+                        <span class="translate" data-es="FIGMA FILE" data-en="FIGMA FILE">FIGMA FILE</span>
+                    </a>
+                    <button onclick="goToSection(1)" class="btn-primary translate" data-es="Explorar Proceso" data-en="Explore Process">Explore Process</button>
+                </div>
             </div>
         </section>
 
@@ -109,10 +122,10 @@
                         <p class="text-[14px] leading-relaxed translate" data-es="Función 'Edita tu Espacio': El usuario puede eliminar, reordenar o renombrar secciones libremente." data-en="'Edit Your Space' feature: Users can now remove, reorder, or rename sections directly from the Home Screen.">'Edit Your Space' feature: Users can now remove, reorder, or rename sections directly from the Home Screen.</p>
                     </div>
                 </div>
-                <div class="result-card hidden md:flex w-full max-w-3xl text-center flex-col items-center justify-center border border-zinc-800 p-8 rounded-2xl">
+                <div class="result-card-container result-card hidden md:flex w-full max-w-3xl text-center flex-col items-center justify-center border border-zinc-800 p-8 rounded-2xl">
                     <span class="block underline font-bold mb-2 translate" data-es="Result:" data-en="Result:">Result:</span>
                     <p class="text-sm md:text-base opacity-80 mb-6 translate" data-es="Reducción de carga cognitiva y acceso más rápido al contenido deseado." data-en="Reduced cognitive load and faster access to desired content.">Reduced cognitive load and faster access to desired content.</p>
-                    <div class="flex gap-8 opacity-40 justify-center w-full">
+                    <div class="result-icons flex gap-8 justify-center w-full">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
                             <circle cx="8.5" cy="7" r="4"></circle>
@@ -151,14 +164,14 @@
                         <div class="flex gap-4">
                             <div class="w-1 bg-red-600 h-auto"></div>
                             <div>
-                                <p class="font-bold text-white text-xs uppercase mb-1 translate" data-es="FOR ELENA (THE DJ)" data-en="FOR ELENA (THE DJ)">FOR ELENA (THE DJ)</p>
+                                <p class="font-bold text-white text-xs uppercase mb-1 translate" data-es="PARA ELENA (DJ)" data-en="FOR ELENA (THE DJ)">FOR ELENA (THE DJ)</p>
                                 <p class="text-xs md:text-sm opacity-60 translate" data-es="Modal multi-selección que elimina la repetición y ahorra un 80% de tiempo en tareas críticas." data-en="Multi-select modal that eliminates repetition and saves 80% of time in critical tasks.">Multi-select modal that eliminates repetition and saves 80% of time in critical tasks.</p>
                             </div>
                         </div>
                         <div class="flex gap-4">
                             <div class="w-1 bg-zinc-600 h-auto"></div>
                             <div>
-                                <p class="font-bold text-white text-xs uppercase mb-1 translate" data-es="FOR CARLOS (THE MUSIC LOVER)" data-en="FOR CARLOS (THE MUSIC LOVER)">FOR CARLOS (THE MUSIC LOVER)</p>
+                                <p class="font-bold text-white text-xs uppercase mb-1 translate" data-es="PARA CARLOS (MELÓMANO)" data-en="FOR CARLOS (THE MUSIC LOVER)">FOR CARLOS (THE MUSIC LOVER)</p>
                                 <p class="text-xs md:text-sm opacity-60 translate" data-es="Búsqueda contextual y home editable para reducir el ruido visual y encontrar clásicos al instante." data-en="Contextual search and editable home to reduce visual noise and find classics instantly.">Contextual search and editable home to reduce visual noise and find classics instantly.</p>
                             </div>
                         </div>
@@ -170,7 +183,21 @@
         <section id="section-5" class="section-page px-6">
             <div class="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
                 <p class="text-zinc-500 uppercase tracking-widest text-[10px] mb-4 translate" data-es="GRACIAS POR MIRAR" data-en="THANKS FOR WATCHING">THANKS FOR WATCHING</p>
-                <h2 class="text-4xl md:text-7xl font-bold mb-12 translate" data-es="Hablemos de música." data-en="Let's talk music.">Let's talk music.</h2>
+                <h2 class="text-4xl md:text-7xl font-bold mb-8 translate" data-es="Hablemos de música." data-en="Let's talk music.">Let's talk music.</h2>
+
+                <div class="mb-12">
+                    <a href="#" target="_blank" class="btn-outline-figma">
+                        <svg width="16" height="24" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 28.5C19 23.235 23.235 19 28.5 19C33.765 19 38 23.235 38 28.5C38 33.765 33.765 38 28.5 38C23.235 38 19 33.765 19 28.5Z" fill="#1ABCFE" />
+                            <path d="M0 47.5C0 42.235 4.235 38 9.5 38H19V47.5C19 52.765 14.765 57 9.5 57C4.235 57 0 52.765 0 47.5Z" fill="#0ACF83" />
+                            <path d="M19 0H28.5C33.765 0 38 4.235 38 9.5C38 14.765 33.765 19 28.5 19H19V0Z" fill="#FF7262" />
+                            <path d="M0 9.5C0 4.235 4.235 0 9.5 0H19V19H9.5C4.235 19 0 14.765 0 9.5Z" fill="#F24E1E" />
+                            <path d="M0 28.5C0 23.235 4.235 19 9.5 19H19V38H9.5C4.235 38 0 33.765 0 28.5Z" fill="#A259FF" />
+                        </svg>
+                        <span class="translate" data-es="FIGMA FILE" data-en="FIGMA FILE">FIGMA FILE</span>
+                    </a>
+                </div>
+
                 <div class="flex gap-6">
                     <div class="w-14 h-14 rounded-full border border-zinc-800 flex items-center justify-center font-bold hover:bg-white hover:text-black transition-colors cursor-pointer">Li</div>
                     <div class="w-14 h-14 rounded-full border border-zinc-800 flex items-center justify-center font-bold hover:bg-white hover:text-black transition-colors cursor-pointer">Be</div>
