@@ -171,3 +171,16 @@ body.light-theme {
     max-width: none !important;
     object-fit: cover !important;
 }
+@media (min-width: 768px) {
+    /* 1. Hacemos que las imágenes ocupen más ancho y reducimos el gap */
+    #section-2 .grid-cols-3 {
+        grid-template-columns: repeat(4, 1fr) !important; /* Ahora caben las 4 en línea */
+        gap: 12px !important; /* Espacio reducido entre ellas */
+        max-width: 95% !important; /* Expandimos el contenedor hacia los lados */
+    }
+
+    /* 2. Quitamos el límite del 80% solo para estas imágenes específicas */
+    #section-2 .aspect-square {
+        max-width: 100% !important;
+    }
+}
