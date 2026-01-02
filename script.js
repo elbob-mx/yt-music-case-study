@@ -6,7 +6,7 @@ let isScrolling = false;
 const navHint = document.getElementById("navigation-hint");
 const backToTopBtn = document.getElementById("back-to-top");
 
-// Configuración de Idioma
+// --- Configuración de Idioma ---
 let currentLang = "en";
 const langToggle = document.getElementById("lang-toggle");
 const langFlagContainer = document.getElementById("lang-flag-container");
@@ -17,6 +17,7 @@ const flags = {
 };
 
 function updateLanguage() {
+    // Muestra la bandera del idioma al que puedes cambiar
     const flagToShow = currentLang === "en" ? flags.es : flags.en;
     langFlagContainer.innerHTML = `<img src="${flagToShow}" class="w-full h-full object-cover">`;
 
@@ -30,13 +31,14 @@ langToggle.addEventListener("click", () => {
     updateLanguage();
 });
 
-// Configuración de Tema
+// --- Configuración de Tema ---
 let isDark = true;
 const themeToggle = document.getElementById("theme-toggle");
 const themeIconContainer = document.getElementById("theme-icon-container");
 
 function updateTheme() {
     document.body.className = isDark ? "dark-theme dark" : "light-theme";
+    // Icono dinámico: Sol para activar luz, Luna para activar oscuridad
     themeIconContainer.innerHTML = isDark
         ? `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>`
         : `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>`;
@@ -47,8 +49,10 @@ themeToggle.addEventListener("click", () => {
     updateTheme();
 });
 
+// --- Interfaz de Navegación ---
 function updateNavigationUI() {
     if (currentSection === totalSections - 1) {
+        // En la última sección (Gracias), ocultamos el hint y mostramos el botón de inicio
         navHint.style.opacity = "0";
         backToTopBtn.style.opacity = "1";
         backToTopBtn.style.pointerEvents = "auto";
@@ -59,7 +63,7 @@ function updateNavigationUI() {
     }
 }
 
-// Navegación GSAP
+// --- Navegación GSAP ---
 function goToSection(index) {
     if (index < 0 || index >= totalSections || isScrolling) return;
 
@@ -77,6 +81,7 @@ function goToSection(index) {
     });
 }
 
+// Eventos de Scroll y Teclado
 window.addEventListener(
     "wheel",
     (e) => {
@@ -99,6 +104,7 @@ window.addEventListener("keydown", (e) => {
     }
 });
 
+// Soporte Táctil
 let touchStart = 0;
 window.addEventListener("touchstart", (e) => {
     touchStart = e.touches[0].clientY;
@@ -114,7 +120,7 @@ window.addEventListener("touchend", (e) => {
     }
 });
 
-// Inicialización
+// --- Inicialización ---
 updateLanguage();
 updateTheme();
 updateNavigationUI();

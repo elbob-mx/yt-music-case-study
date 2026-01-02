@@ -92,7 +92,7 @@ body.light-theme {
     transform: translateY(-2px);
 }
 
-/* Colores dinámicos */
+/* Colores Dinámicos */
 .dark-theme .persona-name,
 .dark-theme .metric-number {
     color: var(--accent-cyan) !important;
@@ -103,16 +103,15 @@ body.light-theme {
     color: var(--yt-red) !important;
 }
 
-/* Fix Contraste Light Mode: Labels Seccion 4 */
+/* Fix Contraste Profile labels */
 .light-theme .profile-label {
     color: var(--yt-red) !important;
 }
-
 .dark-theme .profile-label {
     color: white !important;
 }
 
-/* Cards visibility en Light Mode */
+/* Cards visibility */
 .light-theme .stats-card,
 .light-theme .stats-card-centered {
     border: 1px solid var(--border-light) !important;
@@ -125,17 +124,6 @@ body.light-theme {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Checkpoint Sección 3 */
-.dark-theme .result-card-container {
-    border-color: var(--accent-cyan) !important;
-}
-
-.dark-theme .result-icons svg {
-    color: var(--accent-cyan) !important;
-    stroke: var(--accent-cyan) !important;
-    opacity: 1 !important;
-}
-
 .metric-number {
     font-weight: 700;
     letter-spacing: -0.05em;
@@ -145,7 +133,6 @@ body.light-theme {
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    opacity: 0.5;
     font-weight: 700;
 }
 
@@ -160,8 +147,27 @@ body.light-theme {
     font-size: 10px;
 }
 
-@media (max-width: 768px) {
-    .desktop-only {
-        display: none !important;
-    }
+/* --- AJUSTE DE TAMAÑO DE IMAGEN (Solo para el contenido, no para botones) --- */
+/* Reducimos solo los contenedores de las secciones de contenido */
+.section-page .aspect-video,
+.section-page .aspect-square {
+    max-width: 80% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Forzamos que la imagen dentro del contenedor ocupe el 100% de ese contenedor */
+.section-page .aspect-video img,
+.section-page .aspect-square img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+/* PROTECCIÓN TOTAL: Esto asegura que las banderas del botón nunca se alteren */
+#lang-flag-container img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
 }
