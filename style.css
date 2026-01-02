@@ -1,7 +1,9 @@
 :root {
     --yt-red: #ff0000;
+    --yt-red-dark: #cc0000;
+    --accent-cyan: #3cffd0;
     --bg-dark: #0f0f0f;
-    --bg-light: #ffffff;
+    --bg-light: #f2f2f2;
     --text-dark: #ffffff;
     --text-light: #0f0f0f;
 }
@@ -47,11 +49,22 @@ body.light-theme {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 14px;
-    transition: transform 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
-    transform: scale(1.05);
+    background-color: var(--yt-red-dark);
+}
+
+/* Colores dinámicos para Nombres y Números Estadísticos */
+.dark-theme .persona-name,
+.dark-theme .metric-number {
+    color: var(--accent-cyan) !important;
+}
+
+.light-theme .persona-name,
+.light-theme .metric-number {
+    color: var(--yt-red) !important;
 }
 
 .stats-card-centered {
@@ -73,7 +86,7 @@ body.light-theme {
 .metric-number {
     font-weight: 700;
     letter-spacing: -0.05em;
-    color: var(--yt-red);
+    /* El color ahora se controla por el tema arriba */
 }
 
 .instruction-text {

@@ -3,6 +3,9 @@ const sections = document.querySelectorAll(".section-page");
 const totalSections = sections.length;
 let isScrolling = false;
 
+const navHint = document.getElementById("navigation-hint");
+const backToTopBtn = document.getElementById("back-to-top");
+
 // Configuración de Idioma
 let currentLang = "en";
 const langToggle = document.getElementById("lang-toggle");
@@ -14,7 +17,6 @@ const flags = {
 };
 
 function updateLanguage() {
-    // CAMBIO DE LÓGICA: Muestra la bandera del idioma al que puedes CAMBIAR
     const flagToShow = currentLang === "en" ? flags.es : flags.en;
     langFlagContainer.innerHTML = `<img src="${flagToShow}" class="w-full h-full object-cover">`;
 
@@ -45,12 +47,25 @@ themeToggle.addEventListener("click", () => {
     updateTheme();
 });
 
+function updateNavigationUI() {
+    if (currentSection === totalSections - 1) {
+        navHint.style.opacity = "0";
+        backToTopBtn.style.opacity = "1";
+        backToTopBtn.style.pointerEvents = "auto";
+    } else {
+        navHint.style.opacity = "1";
+        backToTopBtn.style.opacity = "0";
+        backToTopBtn.style.pointerEvents = "none";
+    }
+}
+
 // Navegación GSAP
 function goToSection(index) {
     if (index < 0 || index >= totalSections || isScrolling) return;
 
     isScrolling = true;
     currentSection = index;
+    updateNavigationUI();
 
     gsap.to(window, {
         duration: 1,
@@ -102,3 +117,4 @@ window.addEventListener("touchend", (e) => {
 // Inicialización
 updateLanguage();
 updateTheme();
+updateNavigationUI();
