@@ -29,8 +29,6 @@ function updateUI() {
 
     document.getElementById("theme-icon-container").innerHTML = isDark ? icons.light : icons.dark;
 
-    // Cambiamos .textContent por .innerHTML para procesar las etiquetas de formato
-
     document.querySelectorAll(".translate").forEach((el) => {
         el.innerHTML = el.getAttribute(`data-${lang}`);
     });
@@ -55,6 +53,16 @@ function goToSection(index) {
         },
     });
 }
+
+// Navegación con Teclado (Flechas Arriba y Abajo)
+window.addEventListener("keydown", (e) => {
+    if (isScrolling) return;
+    if (e.key === "ArrowDown") {
+        goToSection(currentSection + 1);
+    } else if (e.key === "ArrowUp") {
+        goToSection(currentSection - 1);
+    }
+});
 
 window.addEventListener(
     "wheel",
