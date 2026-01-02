@@ -14,7 +14,10 @@ const flags = {
 };
 
 function updateLanguage() {
-    langFlagContainer.innerHTML = `<img src="${flags[currentLang]}" class="w-full h-full object-cover">`;
+    // CAMBIO DE LÓGICA: Muestra la bandera del idioma al que puedes CAMBIAR
+    const flagToShow = currentLang === "en" ? flags.es : flags.en;
+    langFlagContainer.innerHTML = `<img src="${flagToShow}" class="w-full h-full object-cover">`;
+
     document.querySelectorAll(".translate").forEach((el) => {
         el.innerHTML = el.getAttribute(`data-${currentLang}`);
     });
@@ -42,7 +45,7 @@ themeToggle.addEventListener("click", () => {
     updateTheme();
 });
 
-// Navegación GSAP con corrección de secciones
+// Navegación GSAP
 function goToSection(index) {
     if (index < 0 || index >= totalSections || isScrolling) return;
 
