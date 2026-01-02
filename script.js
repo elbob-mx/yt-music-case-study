@@ -5,10 +5,8 @@ let touchStartY = 0;
 let touchEndY = 0;
 
 const flags = {
-    // México: Círculo café central r="40" y color más oscuro para que se note
     es: `<svg viewBox="0 0 640 480" preserveAspectRatio="xMidYMid slice"><path fill="#006847" d="M0 0h213.3v480H0z"/><path fill="#fff" d="M213.3 0h213.4v480H213.3z"/><path fill="#ce1126" d="M426.7 0H640v480H426.7z"/><circle fill="#5D4037" cx="320" cy="240" r="40" opacity="0.8"/></svg>`,
-    // USA
-    en: `<svg viewBox="0 0 640 480" preserveAspectRatio="xMidYMid slice"><path fill="#002868" d="M0 0h640v480H0z"/><path fill="#FFF" d="M0 0h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0z"/><path fill="#BF0A30" d="M0 37h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0z"/><path fill="#002868" d="M0 0h256v221.5H0z"/><path fill="#FFF" d="M25.6 18.5l3.5 10.7h11.2l-9.1 6.6 3.5 10.7-9.1-6.6-9.1 6.6 3.5-10.7-9.1-6.6h11.2z"/></svg>`,
+    en: `<svg viewBox="0 0 640 480" preserveAspectRatio="xMidYMid slice"><path fill="#002868" d="M0 0h640v480H0z"/><path fill="#FFF" d="M0 0h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0z"/><path fill="#BF0A30" d="M0 37h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0zm0 73.9h640v36.9H0zm0 73.8h640v37H0z"/><path fill="#002868" d="M0 0h256v221.5H0z"/><path fill="#FFF" d="M25.6 18.5l3.5 10.7h11.2l-9.1 6.6 3.5 10.7-9.1-6.6-9.1 6.6 3.5-10.7-9.1-6.6h11.2z"/></svg>`,
 };
 
 const icons = {
@@ -17,17 +15,14 @@ const icons = {
 };
 
 function updateUI() {
-    // Prioridad inglés: Si no hay selección previa, carga 'en'
     const lang = localStorage.getItem("lang") || "en";
     const isDark = document.body.classList.contains("dark-theme");
-
-    // Si el sitio está en inglés (en), el botón muestra la bandera de México (es) para cambiar
     document.getElementById("lang-flag-container").innerHTML = lang === "en" ? flags.es : flags.en;
-
     document.getElementById("theme-icon-container").innerHTML = isDark ? icons.light : icons.dark;
 
+    // Cambiamos .textContent por .innerHTML para procesar las etiquetas de formato
     document.querySelectorAll(".translate").forEach((el) => {
-        el.textContent = el.getAttribute(`data-${lang}`);
+        el.innerHTML = el.getAttribute(`data-${lang}`);
     });
 }
 
@@ -45,7 +40,6 @@ function goToSection(index) {
     });
 }
 
-// Navegación con Mouse Wheel
 window.addEventListener(
     "wheel",
     (e) => {
@@ -57,7 +51,6 @@ window.addEventListener(
     { passive: true }
 );
 
-// Navegación Touch
 window.addEventListener(
     "touchstart",
     (e) => {
@@ -82,7 +75,6 @@ function handleTouch() {
     }
 }
 
-// Event Listeners para botones
 document.getElementById("lang-toggle").addEventListener("click", () => {
     const currentLang = localStorage.getItem("lang") || "en";
     const newLang = currentLang === "en" ? "es" : "en";
@@ -95,5 +87,4 @@ document.getElementById("theme-toggle").addEventListener("click", () => {
     updateUI();
 });
 
-// Inicialización
 updateUI();

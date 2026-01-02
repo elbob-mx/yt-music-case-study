@@ -33,6 +33,7 @@ body.dark-theme {
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow-y: hidden;
 }
 
 .btn-primary {
@@ -58,28 +59,75 @@ body.dark-theme {
 }
 
 .stats-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    transition: all 0.5s ease;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.stats-card-centered {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    transition: all 0.5s ease;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+body.dark-theme .stats-card,
+body.dark-theme .stats-card-centered {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #333;
+    margin-bottom: 0.5rem;
+    border: 2px solid var(--yt-red);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+    .user-avatar {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
 }
 
 .metric-number {
     color: var(--yt-red) !important;
     font-weight: 700;
     line-height: 1;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .instruction-text {
-    font-size: 10px;
+    font-size: 8px;
     font-weight: 700;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: #888;
+}
+
+@media (min-width: 768px) {
+    .instruction-text {
+        font-size: 10px;
+    }
 }
 
 .key-cap {
@@ -99,18 +147,18 @@ body.dark-theme {
     color: #888;
 }
 
-.mobile-only {
+.mobile-tablet-only {
     display: flex !important;
 }
 .desktop-only {
     display: none !important;
 }
 
-@media (min-width: 768px) {
-    .mobile-only {
+@media (min-width: 1024px) {
+    .mobile-tablet-only {
         display: none !important;
     }
     .desktop-only {
-        display: flex !important;
+        display: grid !important;
     }
 }
