@@ -77,27 +77,30 @@
 
         <section id="section-2" class="section-page px-6">
             <div class="w-full max-w-6xl mx-auto flex flex-col items-center text-center py-4 md:py-20 h-full justify-center">
-                <div class="desktop-only grid grid-cols-3 gap-6 w-full mb-12">
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-6 md:mb-12">
                     <div class="aspect-square rounded-3xl bg-zinc-900 border border-zinc-800 flex items-center justify-center">
                         <span class="text-[10px] opacity-30 tracking-widest uppercase">[Elena Card]</span>
                     </div>
-                    <div class="aspect-square rounded-3xl bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+                    <div class="hidden md:flex aspect-square rounded-3xl bg-zinc-900 border border-zinc-800 items-center justify-center">
                         <span class="text-[10px] opacity-30 tracking-widest uppercase">[Carlos Card]</span>
                     </div>
-                    <div class="aspect-square rounded-3xl bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+                    <div class="hidden md:flex aspect-square rounded-3xl bg-zinc-900 border border-zinc-800 items-center justify-center">
                         <span class="text-[10px] opacity-30 tracking-widest uppercase">[Flow Graph]</span>
                     </div>
                 </div>
+
                 <h2 class="text-[10px] font-bold opacity-50 uppercase tracking-[0.3em] mb-1 md:mb-2 translate" data-es="02. El Problema" data-en="02. The Problem">02. The Problem</h2>
                 <h3 class="text-[20px] md:text-4xl font-bold mb-2 md:mb-3 translate" data-es="Ruido vs. Ritmo." data-en="Noise vs. Rhythm.">Noise vs. Rhythm.</h3>
-                <p class="text-[16px] md:text-lg opacity-70 max-w-3xl mb-3 md:mb-8 translate" data-es="Descubrí que la interfaz actual interrumpía el flujo. Identifiqué dos extremos que guiaron mi solución:" data-en="I discovered that the current interface broke the user's flow. I identified two extremes that guided my solution:">I discovered that the current interface broke the user's flow. I identified two extremes that guided my solution:</p>
-                <div class="grid grid-cols-2 gap-2 md:gap-6 w-full max-w-5xl">
-                    <div class="stats-card p-3 md:p-10 rounded-2xl md:rounded-[40px] w-full text-center items-center">
+
+                <div class="grid grid-cols-2 gap-2 md:gap-6 w-full max-w-6xl">
+                    <div class="stats-card p-4 md:p-10 rounded-2xl md:rounded-[40px] w-full text-center items-center">
                         <p class="persona-name text-lg md:text-2xl font-bold">Elena, 22</p>
                         <p class="instruction-text mb-2 md:mb-4 translate" data-es="DJ Urbana" data-en="Urban DJ">Urban DJ</p>
                         <p class="text-[12px] md:text-sm leading-[1.5] opacity-80 translate" data-es="Perdida en demasiados pasos. Simplifiqué su flujo de 'Guardar'. <br><span class='block underline font-semibold mt-2'>Resultado:</span> Listas creadas en segundos." data-en="Buried in too many steps. I streamlined the 'Save' flow. <br><span class='block underline font-semibold mt-2'>Result:</span> Playlists curated in seconds.">Buried in too many steps. I streamlined the 'Save' flow. <br><span class='block underline font-semibold mt-2'>Result:</span> Playlists curated in seconds.</p>
                     </div>
-                    <div class="stats-card p-3 md:p-10 rounded-2xl md:rounded-[40px] w-full text-center items-center">
+
+                    <div class="stats-card p-4 md:p-10 rounded-2xl md:rounded-[40px] w-full text-center items-center">
                         <p class="persona-name text-lg md:text-2xl font-bold">Carlos, 70</p>
                         <p class="instruction-text mb-2 md:mb-4 translate" data-es="Melómano" data-en="Music Lover">Music Lover</p>
                         <p class="text-[12px] md:text-sm leading-[1.5] opacity-80 translate" data-es="Frustrado por el ruido visual. Aislé su biblioteca personal. <br><span class='block underline font-semibold mt-2'>Resultado:</span> Acceso a sus clásicos sin error." data-en="Frustrated by visual noise. I isolated his personal library. <br><span class='block underline font-semibold mt-2'>Result:</span> Finds classics with zero errors.">Frustrated by visual noise. I isolated his personal library. <br><span class='block underline font-semibold mt-2'>Result:</span> Finds classics with zero errors.</p>
@@ -140,7 +143,7 @@
                             <path d="M21 21l-4.35-4.35"></path>
                         </svg>
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2v16z"></path>
                         </svg>
                     </div>
                 </div>
@@ -160,19 +163,23 @@
                     <h3 class="text-2xl md:text-5xl font-bold translate" data-es="Flujos optimizados para todos." data-en="Optimized flows for everyone.">Optimized flows for everyone.</h3>
                     <p class="text-sm md:text-lg opacity-70 translate" data-es="Al re-diseñar el flujo de guardado y búsqueda, resolvemos las frustraciones de ambos perfiles bajo un mismo modelo eficiente." data-en="By re-engineering the save and search flow, we resolve the frustrations of both profiles under a single efficient model.">By re-engineering the save and search flow, we resolve the frustrations of both profiles under a single efficient model.</p>
 
-                    <div class="grid grid-cols-1 gap-4 pt-4 border-t border-zinc-800">
+                    <div class="grid grid-cols-1 gap-6 pt-6 border-t border-zinc-800">
                         <div class="flex gap-4">
                             <div class="w-1 bg-red-600 h-auto"></div>
                             <div>
-                                <p class="font-bold text-white text-xs uppercase mb-1 translate" data-es="PARA ELENA (DJ)" data-en="FOR ELENA (THE DJ)">FOR ELENA (THE DJ)</p>
-                                <p class="text-xs md:text-sm opacity-60 translate" data-es="Modal multi-selección que elimina la repetición y ahorra un 80% de tiempo en tareas críticas." data-en="Multi-select modal that eliminates repetition and saves 80% of time in critical tasks.">Multi-select modal that eliminates repetition and saves 80% of time in critical tasks.</p>
+                                <p class="profile-label font-bold text-xs uppercase mb-1 translate" data-es="PARA ELENA (DJ)" data-en="FOR ELENA (THE DJ)">FOR ELENA (THE DJ)</p>
+                                <p class="text-[10px] md:text-sm opacity-60 leading-relaxed translate" data-es="Como DJ activa, Elena exige una velocidad extrema. Le encanta crear múltiples listas de reproducción, cada una con su propio estilo distintivo. La interfaz actual la obligaba a navegar por múltiples menús repetitivos solo para organizarlas. Al implementar un sistema inteligente de selección múltiple y un acceso directo a la función 'Guardar', transformé un proceso frustrante de 6 pasos en una acción fluida de un solo toque." data-en="As an active DJ, Elena demands extreme speed. She loves building multiple playlists, each with its own distinct style. The current interface forced her through multiple repetitive menus just to organize them. By implementing a smart multi-select system and a 'Save' function shortcut, I transformed a frustrating 6-step process into a fluid, one-tap action.">
+                                    As an active DJ, Elena demands extreme speed. She loves building multiple playlists, each with its own distinct style. The current interface forced her through multiple repetitive menus just to organize them. By implementing a smart multi-select system and a 'Save' function shortcut, I transformed a frustrating 6-step process into a fluid, one-tap action.
+                                </p>
                             </div>
                         </div>
                         <div class="flex gap-4">
                             <div class="w-1 bg-zinc-600 h-auto"></div>
                             <div>
-                                <p class="font-bold text-white text-xs uppercase mb-1 translate" data-es="PARA CARLOS (MELÓMANO)" data-en="FOR CARLOS (THE MUSIC LOVER)">FOR CARLOS (THE MUSIC LOVER)</p>
-                                <p class="text-xs md:text-sm opacity-60 translate" data-es="Búsqueda contextual y home editable para reducir el ruido visual y encontrar clásicos al instante." data-en="Contextual search and editable home to reduce visual noise and find classics instantly.">Contextual search and editable home to reduce visual noise and find classics instantly.</p>
+                                <p class="profile-label font-bold text-xs uppercase mb-1 translate" data-es="PARA CARLOS (MELÓMANO)" data-en="FOR CARLOS (THE MUSIC LOVER)">FOR CARLOS (THE MUSIC LOVER)</p>
+                                <p class="text-[10px] md:text-sm opacity-60 leading-relaxed translate" data-es="Carlos valora la claridad sobre la recomendación algorítmica constante. Mi rediseño le otorgó control total para eliminar o editar secciones del Inicio, de modo que solo permanezca lo que él considera esencial. Sus canciones o podcasts favoritos están siempre a la mano, eliminando el desorden visual, la fricción de navegación y la fatiga cognitiva." data-en="Carlos values clarity over constant algorithmic suggestions. My redesign gave him full control to remove or edit Home sections so only what he considers essential remains. His favorite songs or podcasts are always at hand, eliminating visual clutter, navigation friction, and cognitive fatigue.">
+                                    Carlos values clarity over constant algorithmic suggestions. My redesign gave him full control to remove or edit Home sections so only what he considers essential remains. His favorite songs or podcasts are always at hand, eliminating visual clutter, navigation friction, and cognitive fatigue.
+                                </p>
                             </div>
                         </div>
                     </div>

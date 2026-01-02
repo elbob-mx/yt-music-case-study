@@ -6,7 +6,9 @@
     --bg-light: #f2f2f2;
     --text-dark: #ffffff;
     --text-light: #0f0f0f;
-    --figma-text: #f2f2f2;
+    --figma-text-dark: #f2f2f2;
+    --figma-text-light: #0f0f0f;
+    --border-light: #d1d1d1;
 }
 
 * {
@@ -61,10 +63,8 @@ body.light-theme {
     background-color: var(--yt-red-dark);
 }
 
-/* Botón Figma: Contorno Rojo, Texto #f2f2f2 */
 .btn-outline-figma {
     background-color: transparent;
-    color: var(--figma-text);
     border: 2px solid var(--yt-red);
     padding: 12px 32px;
     border-radius: 100px;
@@ -79,13 +79,20 @@ body.light-theme {
     gap: 10px;
 }
 
+.dark-theme .btn-outline-figma {
+    color: var(--figma-text-dark);
+}
+.light-theme .btn-outline-figma {
+    color: var(--figma-text-light);
+}
+
 .btn-outline-figma:hover {
     background-color: rgba(255, 0, 0, 0.05);
     border-color: var(--yt-red-dark);
     transform: translateY(-2px);
 }
 
-/* Colores dinámicos para Nombres y Números Estadísticos */
+/* Colores dinámicos */
 .dark-theme .persona-name,
 .dark-theme .metric-number {
     color: var(--accent-cyan) !important;
@@ -96,32 +103,37 @@ body.light-theme {
     color: var(--yt-red) !important;
 }
 
-/* Estilos para la sección de resultados e iconos */
+/* Fix Contraste Light Mode: Labels Seccion 4 */
+.light-theme .profile-label {
+    color: var(--yt-red) !important;
+}
+
+.dark-theme .profile-label {
+    color: white !important;
+}
+
+/* Cards visibility en Light Mode */
+.light-theme .stats-card,
+.light-theme .stats-card-centered {
+    border: 1px solid var(--border-light) !important;
+    background: white;
+}
+
+.dark-theme .stats-card,
+.dark-theme .stats-card-centered {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Checkpoint Sección 3 */
 .dark-theme .result-card-container {
     border-color: var(--accent-cyan) !important;
 }
 
-/* Forzar color sólido en los iconos SVG de la sección 3 */
 .dark-theme .result-icons svg {
     color: var(--accent-cyan) !important;
     stroke: var(--accent-cyan) !important;
     opacity: 1 !important;
-}
-
-.stats-card-centered {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.stats-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    flex-direction: column;
 }
 
 .metric-number {
